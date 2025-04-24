@@ -3,9 +3,9 @@
  * kruskal.cpp
  * Spring 2025
  *
- * Partner 1:
- * Partner 2:
- * Date:
+ * Partner 1: Princess Alexander
+ * Partner 2: Livia Stein Freitas
+ * Date: 04/23/25
  */
 
 #include "kruskal.hpp"

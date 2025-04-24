@@ -14,15 +14,40 @@ using namespace std;
 
 /*
  * find
+ * 
+ * Find what set vertex v belongs to.
+ * 
+ * input: an integer v, an integer vector pi
+ * output: an integer
  */
 int find(int v, vector<int> &pi) {
-    return -1;
+    if (v != pi[v]){ // if not in the root
+        pi[v] = find(pi[v], pi); // set v's parent to be the root
+    }
+    return pi[v]; // return the root, our new parent
 }
 
 /*
  * union_by_rank
+ * 
+ * Merges the sets containing vertices u and v.
+ * 
+ * input: integers u and v , integer vector rank, integer vector pi
+ * output: nothing
  */
 void union_by_rank(int u, int v, vector<int> &rank, vector<int> &pi) {
+    if (rank[u] == rank[v]){ 
+        //if heights are equal, make u's root to be v's root
+        pi[u] = pi[v];
+        //v's root's height increases
+        rank[v] += 1;
+    } else if (rank[u] >= rank[v]){
+        // make v's root to be u
+        pi[v] = pi[u];
+    } else{
+        // make u's root to be v's root
+        pi[u] = pi[v];
+    }
     return;
 }
 
